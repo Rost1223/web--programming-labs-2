@@ -1,10 +1,13 @@
-from flask import Flask
+from flask import Flask,  redirect, url_for
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/index")
 def start():
-    return '''
+    return redirect("/menu", code=302)
+@app.route("/menu")
+def menu():
+    return'''
 
 
 <!doctype html>
