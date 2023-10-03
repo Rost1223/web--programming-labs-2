@@ -190,3 +190,7 @@ def pugna():
     </body>
 </html>
 '''
+@app.route('/aaa')
+def aaa():
+    return'LLL'
+    
