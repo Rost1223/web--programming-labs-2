@@ -192,9 +192,9 @@ def pugna():
 '''
 @app.route('/lab2/example')
 def example():
-    name = 'Разуванов Ростислаd'
+    name = 'Разуванов Ростислав'
     laba2 = 'Лабораторная работа 2'
-    group = 'ФБ-14'
+    group = 'ФБИ-14'
     kurs = '3 курс'
     student = 'Пивоварова Алина.'
 
