@@ -1,4 +1,4 @@
-from flask import Flask,  redirect, url_for
+from flask import Flask,  redirect, url_for, render_template
 app = Flask(__name__)
 
 @app.route("/")
@@ -190,7 +190,10 @@ def pugna():
     </body>
 </html>
 '''
-@app.route('/aaa')
-def aaa():
-    return'LLL'
-    
+@app.route('/lab2/example')
+def example():
+     name = 'Разуванов Ростислав'
+     return render_template('example.html', name=name)
+
+
+
