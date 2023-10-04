@@ -1,0 +1,22 @@
+body {
+    background-color: lightgreen;
+    color: rgb(53, 24, 24);
+    font-size: 20pt;
+    margin: 0px;
+}
+img {
+    width: 500px;
+    padding-left: 500px;
+}
+header {
+    background-color: rgb(106, 149, 108);
+    color: black;
+    padding: 10px;
+    font-size: 16pt;
+}
+footer {
+    background-color: rgb(106, 149, 108);
+    color: black;
+    padding: 10px;
+    font-size: 16pt;
+}
