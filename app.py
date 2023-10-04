@@ -192,8 +192,14 @@ def pugna():
 '''
 @app.route('/lab2/example')
 def example():
-     name = 'Разуванов Ростислав'
-     return render_template('example.html', name=name)
+    name = 'Разуванов Ростислаd'
+    laba2 = 'Лабораторная работа 2'
+    group = 'ФБ-14'
+    kurs = '3 курс'
+    student = 'Пивоварова Алина.'
+
+    return render_template('example.html', 
+                            name=name, laba2=laba2, group=group, kurs=kurs)
 
 
 
