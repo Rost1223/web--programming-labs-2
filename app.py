@@ -193,13 +193,20 @@ def pugna():
 @app.route('/lab2/example')
 def example():
     name = 'Разуванов Ростислав'
-    laba2 = 'Лабораторная работа 2'
+    laba_num = 'Лабораторная работа 2'
     group = 'ФБИ-14'
     kurs = '3 курс'
-    student = 'Пивоварова Алина.'
+    student = 'Разуванов Ростислав'
+    fruits = [
+        {'name': 'яблоки', 'price': 100},
+        {'name': 'груши',  'price': 120},
+        {'name': 'апельсины', 'price': 80}, 
+        {'name': 'мандарины', 'price': 95},
+        {'name': 'манго', 'price': 321}
+        ]
 
     return render_template('example.html', 
-                            name=name, laba2=laba2, group=group, kurs=kurs)
+                            name=name, laba_num=laba_num, group=group, kurs=kurs, fruits= fruits)
 
 
 
