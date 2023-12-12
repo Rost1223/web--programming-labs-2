@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+
+    {% if name and type_ticket and shelf and baggage and not errors.age and exit_point and arrival_point and date %}
+
+    <h1>Ваш билет готов</h1>
+
+    <div class="ticket">
+        Имя пассажира: {{ name }}
+    </div><br>
+
+    <div class="ticket">
+        Тип билета: {{ type_ticket }}
+    </div><br>
+
+    <div class="ticket">
+        Тип полки: {{ shelf }}
+    </div><br>
+
+    <div class="ticket">
+        Наличие багажа: {{ baggage }}
+    </div><br>
+
+    <div class="ticket">
+        Возраст пассажира: {{ age }}
+    </div><br>
+
+    <div class="ticket">
+        Пункт выезда: {{ exit_point }}
+    </div><br>
+
+    <div class="ticket">
+        Пункт назначения: {{ arrival_point }}
+    </div><br>
+
+    <div class="ticket">
+        Дата поездки: {{ date }}
+    </div>
+
+    {% else %}
+
+    <h1>Здравствуйте!</h1>
+    <h2>Заполните, пожалуйста, данные для покупки железнодорожного билета</h2>
+
+
+    <form>
+            <label>ФИО пассажира:</label>
+            <div>
+                <input type="text" placeholder="Ваше полное имя..." name="name" value="{{ name or '' }}">
+                <span class="error">{{ errors.name }}</span>
+            </div><br>
+
+
+            <label>Тип билета:</label>
+            <div>
+                <select name="type_ticket">
+                    <option value="kid" {{ type_ticket == 'kid' and 'selected' }}>Детский</option>
+                    <option value="adult" {{ type_ticket =='adult' and 'selected' }}>Взрослый</option>
+                </select>
+            </div><br>
+
+
+            <label>Тип полки:</label>
+            <div>
+                <select name="shelf">
+                    <option value="lower" {{ shelf == 'lower' and 'selected' }}>Нижняя</option>
+                    <option value="upper" {{ shelf =='upper' and 'selected' }}>Верхняя</option>
+                    <option value="upper side" {{ shelf == 'upper' and 'selected' }}>Верхняя боковая</option>
+                    <option value="lower side" {{ shelf == 'lower' and 'selected' }}>Нижняя боковая</option>
+                </select><br>
+            </div>
+
+            <label><br>
+                <input type="checkbox" name="baggage">Есть багаж
+            </label><br><br>
+
+            <label>Ваш возраст:</label>
+            <div>
+                <input type="number" name="age" value="{{ age or '' }}">
+                {% if errors %}
+                <span class="error">{{ errors.age }}</span>
+                {% endif %}
+            </div><br>
+
+            <label>Пункт выезда:</label>
+            <div>
+                <input type="text" placeholder="Введите точку отправления" name="exit_point" value="{{ exit_point or '' }}">
+                <span class="error">{{ errors.exit_point }}</span>
+            </div><br>
+
+            <label>Пункт назначения:</label>
+            <div>
+                <input type="text" placeholder="Введите точку прибытия" name="arrival_point" value="{{ arrival_point or '' }}">
+                <span class="error">{{ errors.arrival_point }}</span>
+            </div><br>
+
+            <label>Дата поездки:</label>
+            <div>
+                <input type="date" name="date" value="{{ date or '' }}">
+                <span class="error">{{ errors.date }}</span>
+            </div><br>
+
+            <div>
+                <button type="submit">Сформировать билет</button>
+            </div>
+    </form>
+    {% endif %}
+{% endblock %}
