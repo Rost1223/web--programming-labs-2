@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+    <h1>Cookies</h1>
+    <form method="post">
+
+    {% for error in errors %}
+
+    <div>{{ error }}</div>
+
+    {% endfor %}
+        <div>
+            <label for="color">Выберите цвет:</label>
+            <input type="color" id="color" name="color">
+        </div>
+        <div>
+            <label for="backgroundcolor">Выберите цвет фона:</label>
+            <input type="color" id="backgroundcolor" name="backgroundcolor">
+        </div>
+        <div>
+            <label for="fontsize">Выберите размер шрифта:</label>
+            <input type="number" id="fontsize" name="fontsize">
+        </div>
+        <div>
+            <button type="submit">Ок</button>
+        </div>
+    </form>
+{% endblock %}
