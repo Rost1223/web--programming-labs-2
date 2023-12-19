@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+
+    {% if not error and temp %}
+
+    <h1>Результат оценки</h1>
+
+    <div style="font-size: 25px;">
+        Установлена температура: {{ temp }} &#8451; 
+        <div style="color: blue; font-size: 60px;">{{ snowflakes }}</div>
+    </div><br>
+    <div>
+        <a href="/lab4/fridge">Установить еще раз</a>
+    </div>
+
+    {% else %}
+
+    <h1>Оценка температуры вашего холодильника</h1>
+        {% if error %}
+            <div class="error" style="font-size: 20px;">{{ error }}</div>
+        {% endif %}
+
+    <form method="post">
+        <label style="font-size: 25px;">Введите температуру холодильника в градусах цельсия:</label><br><br>
+            <div>
+                <input type="number" name="temp" value="{{ temp or '' }}">
+            </div><br>
+
+        <div>
+            <button type="submit">Установить температуру</button>
+        </div>
+    </form>
+    {% endif %}
+{% endblock %}

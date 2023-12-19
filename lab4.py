@@ -22,3 +22,28 @@ def login():
         error = 'Неверные логин и/или пароль'
     return render_template('login.html', error=error, username=username, password=password)
     
+
+@lab4.route('/lab4/fridge', methods = ['GET', 'POST'])
+def fridge():
+    error = None
+    temp = None
+    snowflakes = None
+    if request.method == 'POST':
+        temp = request.form.get('temp')
+
+        if temp is None or temp == '':
+            error = 'Ошибка: не задана температура'
+        else:
+            temp = int(temp)
+
+            if temp < -12:
+                error = 'Не удалось установить температуру — слишком низкое значение'
+            elif temp > -1:
+                error = 'Не удалось установить температуру — слишком высокое значение'
+            elif temp >= -12 and temp < -9:
+                snowflakes = '***'
+            elif temp >= -8 and temp < -5:
+                snowflakes = '**'
+            else:
+                snowflakes = '*'
+    return render_template('fridge.html', error=error, temp=temp, snowflakes=snowflakes)
