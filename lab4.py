@@ -47,3 +47,40 @@ def fridge():
             else:
                 snowflakes = '*'
     return render_template('fridge.html', error=error, temp=temp, snowflakes=snowflakes)
+
+@lab4.route('/lab4/grain_order', methods = ['GET', 'POST'])
+def grain_order():
+    error = None
+    grain = None
+    weight = None
+    skidka = ''
+    price = 0
+    if request.method == 'POST':
+        grain = request.form.get('grain')
+        weight = request.form.get('weight')
+
+        if weight is None or weight == '':
+            error = 'Не введен вес'
+        else:
+            weight = float(weight)
+
+            if weight <= 0:
+                error = 'Неверное значение веса'
+            elif weight > 500:
+                error = 'Такого объема сейчас нет в наличии'
+            else: 
+                if grain == 'yachmen':
+                    price = 12000*weight
+                elif grain == 'oves':
+                    price = 8500*weight
+                elif grain == 'pshenitsa':
+                    price = 8700*weight
+                else:
+                    price = 14000*weight
+                
+                if weight > 50 and weight <= 500:
+                        price = price*0.9
+                        skidka  = 'Применена скидка за большой объём'
+
+
+    return render_template('grain_order.html', error=error, grain=grain, weight=weight, price=price, skidka=skidka)

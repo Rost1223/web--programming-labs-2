@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+
+    {% if not error and grain and weight %}
+
+    <h1>Заказ успешно сформирован</h1>
+
+    <div style="font-size: 25px;">
+        Вы заказали: {{ grain }}. Вес: {{ weight }} т. <br>
+        Сумма к оплате: {{ price }} &#8381;
+        <p>{{ skidka }}</p>
+        
+    </div><br>
+    <div>
+        <a href="/lab4/grain_order">Заказать еще</a>
+    </div>
+
+    {% else %}
+
+    <h1>Заказ зерна</h1>
+        {% if error %}
+            <div class="error" style="font-size: 20px;">{{ error }}</div>
+        {% endif %}
+
+    <form method="post">
+        <label>Зерно:</label>
+            <div>
+                <select name="grain">
+                    <option value="ячмень" {{ grain == 'yachmen' and 'selected' }}>Ячмень</option>
+                    <option value="овёс" {{ grain =='oves' and 'selected' }}>Овёс</option>
+                    <option value="пшеница" {{ grain == 'pshenitsa' and 'selected' }}>Пшеница</option>
+                    <option value="рожь" {{ grain == 'rozh' and 'selected' }}>Рожь</option>
+                </select><br>
+            </div>
+
+        <label style="font-size: 25px;">Выберите зерно и введите вес в тоннах:</label><br><br>
+            <div>
+                <input type="number" name="weight" value="{{ weight or '' }}">
+            </div><br>
+
+        <div>
+            <button type="submit">Оформить заказ</button>
+        </div>
+    </form>
+    {% endif %}
+{% endblock %}
