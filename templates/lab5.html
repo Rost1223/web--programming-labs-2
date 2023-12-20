@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 5 {% endblock %}
+
+{% block main %}
+<style>
+    nav ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    nav ul li {
+        color: rgb(7, 102, 7);
+        margin-top: 35px;
+        font-weight: bolder;
+    }
+
+    a:link {
+        color: rgb(21, 121, 21);
+        text-decoration: none;
+    }
+    a:visited {
+        color: rgb(7, 102, 7);
+        text-decoration: none;
+    }
+</style>
+<nav>
+    <ul>
+        <li style="margin-top: 20px; margin-right: 380px; margin-left: 90px; font-size: 30px;"><a href="/lab5/">База знаний</a></li>
+        {% if 'id' in session %}
+        <li style="margin-right: 180px; font-size: 20px;"><a href="{{ url_for('lab5.get_user_articles', user_id=session['id']) }}">Посмотреть заметки</a></li>
+        {% else %}
+        <li style="margin-right: 180px; font-size: 20px;"><a href="/lab5/login_lab5">Посмотреть заметки</a></li>
+        {% endif %}
+        <li style="margin-right: 380px; font-size: 20px;"><a href="/lab5/new_article">Создать заметку</a></li>
+        <li style="margin-right: 40px; font-size: 20px;"><a href="/lab5/login_lab5">Логин</a></li>
+        <li style="padding:5px; margin-right: 20px; margin-top: 30px; font-size: 20px; border: 1px solid rgb(3, 82, 3); background-color:rgb(223, 255, 223);  border-radius: 10px;"><a href="/lab5/register">Регистрация</a></li>
+        <li style="font-size: 20px;">{{ username }}</li>
+    </ul>
+</nav>
+{% endblock %}

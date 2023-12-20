@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 5 {% endblock %}
+
+{% block main %}
+
+<style>
+    table {
+        margin-top: 35px;
+        border-collapse: collapse;
+        width: 30%;
+        color: rgb(5, 95, 5);
+        font-weight: bolder;
+        font-size: larger;
+    }
+
+    td {
+        padding: 10px;
+        border: 1px solid rgb(15, 114, 15);
+    }
+</style>
+    <h1>Заметки {{ username }}:</h1>
+    <table>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article[0] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
