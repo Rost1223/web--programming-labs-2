@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 6 {% endblock %}
+
+{% block main %}
+<style>
+    input, textarea {
+        margin-top: 10px;
+        width: 400px;
+        padding: 5px;
+    }
+    .href{
+        font-size: 20px;
+        padding-top: 30px;
+    }
+    a:link {
+        color: rgb(21, 121, 21);
+        text-decoration: none;
+    }
+    a:visited {
+        color: rgb(7, 102, 7);
+        text-decoration: none;
+    }
+</style>
+    <br><div class="href"><a href="/lab6/">Главная страница</a></div>
+    <h1>Новая заметка</h1>
+    {% if errors %}
+        {% for error in errors %}
+        <div div class="error" style="font-size: 20px;">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+    <input name="title_article" type="text" placeholder="Название статьи"><br><br>
+    <textarea name="text_article" placeholder="Текст статьи" rows="20"></textarea><br>
+    <input type="checkbox" name="is_public" style="width: 10px;">Сделать публичной<br>
+    <input type="submit" value="Apply" style="font-weight:bolder; color: rgb(11, 131, 11);">
+    </form>
+{% endblock %}

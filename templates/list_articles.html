@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 6 {% endblock %}
+
+{% block main %}
+
+<style>
+    table {
+        margin-top: 35px;
+        border-collapse: collapse;
+        width: 30%;
+        color: rgb(5, 95, 5);
+        font-weight: bolder;
+        font-size: larger;
+    }
+
+    td {
+        padding: 10px;
+        border: 1px solid rgb(15, 114, 15);
+    }
+    .href{
+        font-size: 20px;
+        padding-top: 30px;
+    }
+
+    a:link {
+        color: rgb(21, 121, 21);
+        text-decoration: none;
+    }
+    a:visited {
+        color: rgb(7, 102, 7);
+        text-decoration: none;
+    }
+</style>
+
+    <br><div class="href"><a href="/lab6/">Главная страница</a></div>
+    <h1>Заметки {{ username }}:</h1>
+    <table>
+        {% for article in articles %}
+        <tr>
+            <td><a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+    <h1>Публичные заметки:</h1>
+    <table>
+        {% for article in all_articles %}
+        <tr>
+            <td><a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
